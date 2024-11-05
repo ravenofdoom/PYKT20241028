@@ -1,0 +1,19 @@
+Aufgabe 1: Addition zweier Zahlen
+
+Aufgabe 2: Subtraktion zweier Zahlen
+
+Aufgabe 3: Multiplikation zweier Zahlen
+
+Aufgabe 4: Division zweier Zahlen
+
+Aufgabe 5: Berechnung des Durchschnitts von drei Zahlen
+
+Aufgabe 6: Berechnung des Flächeninhalts eines Rechtecks
+
+Aufgabe 7: Berechnung des Umfangs eines Rechtecks
+
+Aufgabe 8: Berechnung des Flächeninhalts eines Dreiecks
+
+Aufgabe 9: Berechnung des Umfangs eines Kreises
+
+Aufgabe 10: Berechnung des Flächeninhalts eines Kreises
