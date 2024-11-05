@@ -1,0 +1,1 @@
+Das ist der Python Kurs vom 28.10.2024.
