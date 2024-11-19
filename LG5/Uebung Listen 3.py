@@ -7,15 +7,15 @@
 
 print("Aufgabe 1")
 liste1_1=[50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 1.1, 100, 101, 102, 103, 104]
-liste1_2=[76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 1.1, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148]
+liste1_2=[76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 1.1, 1000, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148]
 
 ind1_1=0
 ind1_2=0
 for x in liste1_1:
-    if not str(x).isdecimal():  # if type(x) == float   würde auch funktionieren
+    if type(x) == float:
         ind1_1=liste1_1.index(x)
 for x in liste1_2:
-    if not str(x).isdecimal():
+    if type(x) == float:
         ind1_2=liste1_2.index(x)
 liste1_3=liste1_1[:ind1_1]+liste1_2[ind1_2+1:]  # liste1_2[ind1_2+1:]   wir geben Liste 1_2 einen um 1 versetzten Offset gegenüber dem gefundenen Index
 print(liste1_3)
