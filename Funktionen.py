@@ -13,7 +13,7 @@
 def sayHello():
     print("Hello!")
 
-# mit Argumente und mit return
+# mit Argumenten und mit return
 def Summe(a, b):
     summe=a+b
     return summe
