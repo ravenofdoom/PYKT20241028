@@ -17,6 +17,7 @@ def sayHello():
 def Summe(a, b):
     summe=a+b
     return summe
+    print("wird nicht mehr ausgeführt") # alles nach return ist toter Code
 
 # Funktionen können intern dokumentiert werden,
 # damit andere Nutzer eine Beschreibung bekommen.
