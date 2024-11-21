@@ -5,16 +5,18 @@ print("Aufgabe 1\n")
 nested_list = [1, [2, [3, 4], 5], 6]
 flat_list = []
 stack = [nested_list]
+#print(stack)
 
-while stack:
+while stack:    # entspricht while len(stack)>0
     current = stack.pop()
     for item in current:
         if isinstance(item, list):
             stack.append(item)
+            print(stack)
         else:
             flat_list.append(item)
 
-print(flat_list)  # [1, 2, 3, 4, 5, 6]
+print(flat_list)  # [1, 6, 2, 5, 3, 4]
 
 
 
@@ -23,9 +25,12 @@ print(flat_list)  # [1, 2, 3, 4, 5, 6]
 print("Aufgabe 2\n")
 
 lst = [1, 2, 3, 4, 5]
-k = 19
-k = k % len(lst)
-rotated_list = lst[-k:] + lst[:-k]
+idx = 8
+#idx = idx % len(lst)    # 6 % 5 = 1
+print(idx)
+print(lst[-idx:])
+print(lst[:-idx])
+rotated_list = lst[-idx:] + lst[:-idx]
 
 print(rotated_list)  # [4, 5, 1, 2, 3]
 
@@ -38,12 +43,14 @@ print(rotated_list)  # [4, 5, 1, 2, 3]
 print("Aufgabe 3\n")
 
 zahlen=[1, 2, 3, 4, 5]
+#gezippt_zahlen=[(1, True), 2, 3, 4, 5]
 tf=[True, False, True, False, True]
 # zielliste -> [1, 3, 5]
 
 zielliste = [x for x, b in zip(zahlen, tf) if b]
 
 print(zielliste)  # [1, 3, 5]
+
 
 
 
@@ -55,6 +62,7 @@ print("Aufgabe 4\n")
 
 lst1 = [1, 2, 3]
 lst2 = [4, 5, 6, 7]
+#print(*list(zip(lst1, lst2)))
 gemischt = []
 len1, len2 = len(lst1), len(lst2)
 
@@ -131,13 +139,14 @@ while stack:
         if isinstance(item, list):
             stack.append(item)
         else:
+            print(item)
             total_sum += item
 
 print(total_sum)  # 21
 
 
 # 8. Erzeuge eine Liste bis 100, in der statt einer durch 5 teilbaren Zahl eine Liste eingefügt wird, 
-# die alle bis dorthin durch 5 teilbaren Zahlen enthält. Also: [0,1,2,3,4,[0,5],6,7,8,9,[0,5,10]...
+# die alle bis dorthin durch 5 teilbaren Zahlen enthält. Also: [0],1,2,3,4,[0,5],6,7,8,9,[0,5,10]...
 
 print("Aufgabe 8\n")
 
@@ -151,7 +160,7 @@ print("Aufgabe 8\n")
     else:
         return x
     
-print([listOf5(x) for x in range(100)]) """
+print([listOf5(x) for x in range(101)]) """
 
 liste100=[x for x in range(101)]      # Liste per LC erstellt
 
@@ -171,11 +180,11 @@ print(listeOfFive)
 
 print("Aufgabe 9\n")
 
-liste1=[x+1 for x in range(100)]
+liste1=[x+1 for x in range(101)]
 liste5=liste1[int(((len(liste1))/2)):int(len(liste1))]+liste1[0:int((len(liste1)/2))] #liste1[((len(liste1))/2):len(liste1)]+
 liste5=liste1[int(((len(liste1))/2)):]+liste1[:int((len(liste1)/2))] # sparsame Variante liste[50:]+liste[:50]
 
-
+print(liste5)
 
 # 10. Führe die Listen [1,2,3,4,5] und [8,7,6,5,4] zusammen und entferne die Duplikate, einmal ohne Beachtung der Reihenfolge, 
 # einmal mit Beachtung der Reihenfolge.
@@ -188,5 +197,6 @@ liste6=liste6a+liste6b
 # liste6=list(set(liste6)) # Variante1: Konvertieren der Liste in ein Set, Reihenfolge wird nicht beibehalten
 liste6=list(dict.fromkeys(liste6)) # Variante2: fromkeys- Methode des Dictionary nutzen und danach wieder in  eine Liste wandeln
 print(liste6, "\n")
+
 
 

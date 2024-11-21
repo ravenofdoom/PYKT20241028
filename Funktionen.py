@@ -25,7 +25,10 @@ def Summe(a, b):
 
 def Summe(a:int|float, b:int|float)->int|float:
     """
-    sums two integers or floats and returns the sum
+    @param a: 
+    @return sum of both
+    @brief: sums two integers or floats and returns the sum
+    @see: andere Funktion
     """
     summe=a+b
     return summe
@@ -51,7 +54,7 @@ def Summe(a:int|float, b:int|float)->int|float:
 def zuweisung(a,b):
     return a,b
 
-x, y = zuweisung(5,10)
+x,y = zuweisung(5,10)
 
 print(x,y)
     
@@ -88,7 +91,8 @@ def anyFunction():
 # als Lambda- Funktionen schreiben. Lambda- Funktionen
 # sind "anonyme" Funktionen ohne Symbol im Arbeitsspeicher,
 # wodurch sie sehr effizient sind.
-
+def even(x):
+    return x%2==0
 # Beispiele Lambda- Funktionen
 greater0 = lambda x: x>0    # prüft, ob die Zahl größer 0 ist
 print(greater0(10))
