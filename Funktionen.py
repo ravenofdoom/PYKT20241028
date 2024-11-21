@@ -46,6 +46,15 @@ def Summe(a:int|float, b:int|float)->int|float:
     else:
         return "Es wurden keine Zahlen übergeben"
     
+# oder tatsächlich mehrere Returnwerte:
+
+def zuweisung(a,b):
+    return a,b
+
+x, y = zuweisung(5,10)
+
+print(x,y)
+    
 # Eine Funktion kann auf Variablen verschiedener
 # Gültigkeitsbereiche zugreifen. Da es möglich ist,
 # Funktionen zu verschachteln, gibt es die Gültigkeits-
