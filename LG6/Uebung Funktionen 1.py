@@ -109,6 +109,9 @@ print("\nAufgabe 8\n")
 def durchschnitt(a,b,c):    
     return (a+b+c)/3
 
+def durchschnitt(a,b):
+    return (a+b)/2
+
 # Beispielaufruf
 print(durchschnitt(5,8,10))
 
@@ -117,8 +120,10 @@ print(durchschnitt(5,8,10))
 
 def durchschnitt_variabel(*args):
     print(*args)
-    if all([(type(x) in [int,float]) for x in args]):
-        return sum(args)/len(args)
-    else: return "Nicht nur numerische Argumente übergeben." 
+    if args:
+        if all([(type(x) in [int,float]) for x in args]):
+            return sum(args)/len(args)
+        else: return "Nicht nur numerische Argumente übergeben."
+    else: return "Keine Argumente übergeben" 
 
-print(durchschnitt_variabel(5.1,8,10, 20))
+print(durchschnitt_variabel())
