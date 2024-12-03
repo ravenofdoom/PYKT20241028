@@ -35,6 +35,13 @@ avrAlterMale/=cntPersonenMale
 print("Durchschnittsalter der Männer: ", round(avrAlterMale, 2))
 print()
 
+# 3. Alternative
+
+personen1={"Erna": [75, "w"], "Rudi": [50, "m"], "Frank": [25, "m"], "Marion": [30, "w"], "Peter": [40, "m"]}
+
+alterFem=list()
+
+
 # 4: Schreibe die Values aus 1) nun so um, dass sie selbst Dictionaries sind 
 #    mit den Keys Geschlecht, Alter, Größe, Gewicht. Berechne die Durchschnitte pro Geschlecht.
 print("\nAufgabe 4\n")
