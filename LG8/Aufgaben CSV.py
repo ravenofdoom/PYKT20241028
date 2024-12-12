@@ -110,7 +110,7 @@ prod_dienst = [Angestellter[3]/Angestellter[5] for Angestellter in erwerbdata]
 # Anteil der Land-, Forst- und Fischereiarbeiter an den Gesamtbeschäftigten
 landForstFisch_gesamt = [Angestellter[2]/Angestellter[1] for Angestellter in erwerbdata]
 
-plot_time_series([x for x in range(1970, 2024)], [prod_dienst,landForstFisch_gesamt], ["prod_dienst", "landForstFisch_gesamt"], "Anteil in Prozent")
+# plot_time_series([x for x in range(1970, 2024)], [prod_dienst,landForstFisch_gesamt], ["prod_dienst", "landForstFisch_gesamt"], "Anteil in Prozent")
 # Jahr;Insgesamt;NahrungGenuss;Kleidung;WohnWasserStromBrenn;Einrichtung;VerkehrNachrichten;Freizeit;BeherbergGastst;Übrige
 
 # Anteile der Konsumposten am Gesamtkonsum
@@ -160,5 +160,86 @@ uebrige_lohn_ratio = [pair[0]/pair[1] for pair in beherbergGastst_lohn]
 # Lohn - Konsum - Differenz
 lohn_konsum = [*list(zip([gesamtlohn[1] for gesamtlohn in lohndata], [konsumposten[1] for konsumposten in konsumdata]))]
 lohn_konsum_diff = [round((pair[0]-pair[1]), 2) for pair in lohn_konsum]
+
+print()
+
+# Datenbank
+
+import sqlite3
+
+# Verbindung zur Datenbank herstellen (oder erstellen, falls sie nicht existiert)
+conn = sqlite3.connect('wirtschaftszahlen.db')
+cursor = conn.cursor()
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS erwerbstaetige (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Jahr INTEGER,
+    Insgesamt INTEGER,
+    LandForstFisch INTEGER,
+    ProdAll INTEGER,
+    ProdBau INTEGER,
+    DienstAll INTEGER,
+    HandelVerkehrGast INTEGER,
+    InformFinanzVermietUnternehmdienst INTEGER,
+    OeffentSonstDienst INTEGER
+)''')
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS konsumentwicklung(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Jahr INTEGER,
+    Insgesamt REAL,
+    NahrungGenuss REAL,
+    Kleidung REAL,
+    WohnWasserStromBrenn REAL,
+    Einrichtung REAL,
+    VerkehrNachrichten REAL,
+    Freizeit REAL,
+    BeherbergGastst REAL,
+    Uebrige REAL)''')
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS lohnentwicklung(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Jahr INTEGER,
+    AN_Entgeld_all REAL,
+    AN_Entgeld REAL,
+    Bruttolöhne REAL,
+    Nettolöhne REAL)''')
+
+cursor.executemany('''INSERT INTO erwerbstaetige(
+                    Jahr,
+                    Insgesamt,
+                    LandForstFisch,
+                    ProdAll,
+                    ProdBau,
+                    DienstAll,
+                    HandelVerkehrGast,
+                    InformFinanzVermietUnternehmdienst,
+                    OeffentSonstDienst
+                ) VALUES (?,?,?,?,?,?,?,?,?)''', erwerbdata)
+
+cursor.executemany('''INSERT INTO konsumentwicklung(
+                        Jahr,
+                        Insgesamt,
+                        NahrungGenuss,
+                        Kleidung,
+                        WohnWasserStromBrenn,
+                        Einrichtung,
+                        VerkehrNachrichten,
+                        Freizeit,
+                        BeherbergGastst,
+                        Uebrige)
+                        VALUES (?,?,?,?,?,?,?,?,?,?)''',konsumdata)
+
+cursor.executemany('INSERT INTO lohnentwicklung (\
+                   Jahr, \
+                   AN_Entgeld_all,\
+                   AN_Entgeld,\
+                   Bruttolöhne,\
+                   Nettolöhne)\
+                    VALUES (?, ?, ?, ?, ?)', lohndata)
+conn.commit()
 
 print()
